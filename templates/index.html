@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Mahalaxmi Stationary Stores</title>
-<meta name="description" content="Mahalaxmi Stationary Stores - Buy stationery and school supplies online.">
 
-<meta name="keywords" content="Mahalaxmi, Mahalaxmi Stores, Mahalaxmi Stationary Stores, stationery store, school supplies">
+    <meta name="description" content="Mahalaxmi Stationary Stores - Buy stationery and school supplies online.">
+    <meta name="keywords" content="Mahalaxmi, Mahalaxmi Stores, Mahalaxmi Stationary Stores, stationery store, school supplies">
+    <meta name="author" content="Mahalaxmi Stationary Stores">
+    <meta name="robots" content="index, follow">
 
-<meta name="author" content="Mahalaxmi Stationary Stores">
-
-<meta name="robots" content="index, follow">
     <style>
         * {
             box-sizing: border-box;
@@ -28,8 +27,18 @@
         header {
             background: #1f4e79;
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
+        }
+
+        .shop-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            margin-bottom: 12px;
         }
 
         header h1 {
@@ -60,6 +69,22 @@
             max-width: 1100px;
             margin: 30px auto;
             padding: 0 20px;
+        }
+
+        .about {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .about h2 {
+            margin-bottom: 12px;
+        }
+
+        .about p {
+            line-height: 1.6;
         }
 
         .section-title {
@@ -123,78 +148,119 @@
 <body>
 
 <header>
-    <h1>🏪 Mahalaxmi Stationary Stores</h1>
+
+    <img src="{{ url_for('static', filename='logo.png') }}"
+         alt="Mahalaxmi Stationary Stores Logo"
+         class="shop-logo">
+
+    <h1>Mahalaxmi Stationary Stores</h1>
+
     <p>Your local stationery shop</p>
+
 </header>
 
 <div class="search">
-    <input type="text" placeholder="🔍 Search stationery products...">
+
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search stationery products..."
+        onkeyup="searchProducts()"
+    >
+
 </div>
 
 <div class="container">
-<div class="container">
 
-    <h2>About Mahalaxmi Stationary Stores</h2>
+    <div class="about">
 
-    <p>
-        Mahalaxmi Stationary Stores is a local stationery store
-        offering stationery and school supplies such as pens,
-        notebooks, pencils, erasers and sharpeners.
-    </p>
+        <h2>About Mahalaxmi Stationary Stores</h2>
+
+        <p>
+            Mahalaxmi Stationary Stores is a local stationery store
+            offering stationery and school supplies such as pens,
+            notebooks, pencils, erasers and sharpeners.
+        </p>
+
+    </div>
 
     <h2 class="section-title">Our Products</h2>
-    <h2 class="section-title">Our Products</h2>
 
-    <div class="products">
+    <div class="products" id="productList">
 
         <div class="product">
+
             <div class="product-icon">🖊️</div>
+
             <h3>Ball Pen</h3>
+
             <p class="price">₹10</p>
+
             <button class="button"
                 onclick="orderOnWhatsApp('Ball Pen', 10)">
                 Order on WhatsApp
             </button>
+
         </div>
 
         <div class="product">
+
             <div class="product-icon">📓</div>
+
             <h3>Notebook</h3>
+
             <p class="price">₹50</p>
+
             <button class="button"
                 onclick="orderOnWhatsApp('Notebook', 50)">
                 Order on WhatsApp
             </button>
+
         </div>
 
         <div class="product">
+
             <div class="product-icon">✏️</div>
+
             <h3>Pencil</h3>
+
             <p class="price">₹5</p>
+
             <button class="button"
                 onclick="orderOnWhatsApp('Pencil', 5)">
                 Order on WhatsApp
             </button>
+
         </div>
 
         <div class="product">
+
             <div class="product-icon">🧽</div>
+
             <h3>Eraser</h3>
+
             <p class="price">₹5</p>
+
             <button class="button"
                 onclick="orderOnWhatsApp('Eraser', 5)">
                 Order on WhatsApp
             </button>
+
         </div>
 
         <div class="product">
+
             <div class="product-icon">🔪</div>
+
             <h3>Sharpener</h3>
+
             <p class="price">₹10</p>
+
             <button class="button"
                 onclick="orderOnWhatsApp('Sharpener', 10)">
                 Order on WhatsApp
             </button>
+
         </div>
 
     </div>
@@ -202,13 +268,20 @@
 </div>
 
 <footer>
-    <p>© 2026 Mahalaxmi Stationary Stores | Stationery & School Supplies</p>
+
+    <p>
+        © 2026 Mahalaxmi Stationary Stores |
+        Stationery & School Supplies
+    </p>
+
 </footer>
 
 <script>
+
     const whatsappNumber = "919900683833";
 
     function orderOnWhatsApp(product, price) {
+
         const message =
             `Hello Mahalaxmi Stationary Stores, I want to order ${product} for ₹${price}.`;
 
@@ -216,7 +289,32 @@
             `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
         window.open(url, "_blank");
+
     }
+
+    function searchProducts() {
+
+        const searchText =
+            document.getElementById("searchBox").value.toLowerCase();
+
+        const products =
+            document.querySelectorAll(".product");
+
+        products.forEach(function(product) {
+
+            const productName =
+                product.querySelector("h3").textContent.toLowerCase();
+
+            if (productName.includes(searchText)) {
+                product.style.display = "block";
+            } else {
+                product.style.display = "none";
+            }
+
+        });
+
+    }
+
 </script>
 
 </body>
