@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +7,8 @@
 
     <title>Mahalaxmi Stores | Stationery Shop in Bhatkal</title>
 
-    <meta name="description" content="Mahalaxmi Stores is a stationery shop in Bhatkal, Uttara Kannada, Karnataka, near Vidya Bharati English Medium School. Buy stationery and school supplies.">
-    <meta name="keywords" content="Mahalaxmi, Mahalaxmi Stores, Mahalaxmi Stationary Stores, stationery store, school supplies">
-    <meta name="author" content="Mahalaxmi Stationary Stores">
-    <meta name="robots" content="index, follow">
+    <meta name="description"
+    content="Mahalaxmi Stores is a stationery shop in Bhatkal, Uttara Kannada, Karnataka, near Vidya Bharati English Medium School.">
 
     <style>
         * {
@@ -27,18 +26,8 @@
         header {
             background: #1f4e79;
             color: white;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: center;
-        }
-
-        /* LOGO */
-        .shop-logo {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-            background: white;
-            padding: 5px;
-            margin-bottom: 12px;
         }
 
         header h1 {
@@ -48,6 +37,7 @@
 
         header p {
             font-size: 16px;
+            margin: 4px;
         }
 
         .search {
@@ -71,24 +61,8 @@
             padding: 0 20px;
         }
 
-        .about {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .about h2 {
-            margin-bottom: 12px;
-        }
-
-        .about p {
-            line-height: 1.6;
-        }
-
         .section-title {
-            margin-bottom: 20px;
+            margin: 30px 0 20px;
             font-size: 26px;
         }
 
@@ -106,9 +80,15 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
-        .product-icon {
-            font-size: 55px;
+        .image-placeholder {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f2f5;
+            border-radius: 8px;
             margin-bottom: 15px;
+            font-size: 50px;
         }
 
         .product h3 {
@@ -118,21 +98,57 @@
         .price {
             font-size: 20px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+        }
+
+        .box-label {
+            color: #666;
+            margin-bottom: 12px;
         }
 
         .button {
             background: #1f4e79;
             color: white;
             border: none;
-            padding: 11px 18px;
+            padding: 10px 12px;
             border-radius: 7px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
+            margin: 3px;
         }
 
         .button:hover {
             background: #163a5c;
+        }
+
+        .cart {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 35px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-total {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .delivery-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 8px;
+        }
+
+        .checkout {
+            margin-top: 20px;
         }
 
         footer {
@@ -148,169 +164,536 @@
 <body>
 
 <header>
-
-  <img src="{{ url_for('static', filename='logo2.png') }}"
-     alt="Mahalaxmi Stationary Stores Logo"
-     class="shop-logo">
-
-    <h1>Mahalaxmi Stationary Stores</h1>
-
-   <p>Your local stationery shop in Bhatkal</p>
-<p>📍 Bhatkal - 581320, Uttara Kannada, Karnataka</p>
-<p>Near Vidya Bharati English Medium School</p>
+    <h1>🏪 Mahalaxmi Stores</h1>
+    <p>Your local stationery shop in Bhatkal</p>
+    <p>📍 Bhatkal, Uttara Kannada, Karnataka</p>
+    <p>Near Vidya Bharati English Medium School</p>
 </header>
 
 <div class="search">
-
-    <input
-        type="text"
-        id="searchBox"
-        placeholder="🔍 Search stationery products..."
-        onkeyup="searchProducts()"
-    >
-
+    <input type="text"
+           id="searchBox"
+           placeholder="🔍 Search stationery products..."
+           onkeyup="searchProducts()">
 </div>
 
 <div class="container">
 
-    <div class="about">
+    <h2 class="section-title">🖊️ Pens</h2>
 
-        <h2>About Mahalaxmi Stationary Stores</h2>
+    <div class="products">
 
-        <p>
-            Mahalaxmi Stationary Stores is a local stationery store
-            offering stationery and school supplies such as pens,
-            notebooks, pencils, erasers and sharpeners.
-        </p>
+        <div class="product" data-name="Cello">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Cello</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Cello', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Cello')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Reynolds">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Reynolds</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Reynolds', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Reynolds')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Flair Writo-meter">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Flair Writo-meter</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Flair Writo-meter', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Flair Writo-meter')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Butterflow">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Butterflow</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Butterflow', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Butterflow')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Cello Gripper">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Cello Gripper</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Cello Gripper', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Cello Gripper')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Flair Carbonix">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Flair Carbonix</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Flair Carbonix', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Flair Carbonix')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Cello Technotip">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Cello Technotip</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Cello Technotip', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Cello Technotip')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="XO">
+            <div class="image-placeholder">🖊️</div>
+            <h3>XO</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('XO', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('XO')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Hauser Germany">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Hauser Germany</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Hauser Germany', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Hauser Germany')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="DOMS">
+            <div class="image-placeholder">🖊️</div>
+            <h3>DOMS</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('DOMS', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('DOMS')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Natraj">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Natraj</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Natraj', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Natraj')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="PaperSoft">
+            <div class="image-placeholder">🖊️</div>
+            <h3>PaperSoft</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('PaperSoft', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('PaperSoft')">
+                WhatsApp
+            </button>
+        </div>
+
+        <div class="product" data-name="Rorito">
+            <div class="image-placeholder">🖊️</div>
+            <h3>Rorito</h3>
+            <p class="price">Price to be added</p>
+            <p class="box-label">📦 Full Box</p>
+            <button class="button" onclick="addToCart('Rorito', 0)">
+                Add to Cart
+            </button>
+            <button class="button" onclick="orderOnWhatsApp('Rorito')">
+                WhatsApp
+            </button>
+        </div>
 
     </div>
 
-    <h2 class="section-title">Our Products</h2>
 
-    <div class="products" id="productList">
+    <h2 class="section-title">🛒 Your Cart</h2>
 
-        <div class="product">
+    <div class="cart">
 
-            <div class="product-icon">🖊️</div>
+        <div id="cartItems">
+            Your cart is empty.
+        </div>
 
-            <h3>Ball Pen</h3>
+        <div class="cart-total">
+            Items total: ₹<span id="subtotal">0</span>
+        </div>
 
-            <p class="price">₹10</p>
+        <div class="delivery-info">
 
-            <button class="button"
-                onclick="orderOnWhatsApp('Ball Pen', 10)">
-                Order on WhatsApp
-            </button>
+            <strong>🚚 Delivery</strong>
+
+            <p style="margin-top:10px;">
+                Within 4 km:
+                <br>
+                • ₹400 or more → <strong>FREE</strong>
+                <br>
+                • Below ₹400 → <strong>₹90</strong>
+            </p>
+
+            <p style="margin-top:10px;">
+                More than 4 km → <strong>₹150</strong>
+            </p>
+
+            <p style="margin-top:15px;">
+                📍 Delivery distance:
+            </p>
+
+            <select id="distance" onchange="updateCart()">
+                <option value="near">Within 4 km</option>
+                <option value="far">More than 4 km</option>
+            </select>
+
+            <p style="margin-top:10px;">
+                Delivery charge:
+                ₹<span id="delivery">0</span>
+            </p>
+
+            <p style="margin-top:10px;">
+                💰 Final total:
+                ₹<span id="grandTotal">0</span>
+            </p>
 
         </div>
 
-        <div class="product">
-
-            <div class="product-icon">📓</div>
-
-            <h3>Notebook</h3>
-
-            <p class="price">₹50</p>
-
-            <button class="button"
-                onclick="orderOnWhatsApp('Notebook', 50)">
-                Order on WhatsApp
+        <div class="checkout">
+            <button class="button" onclick="sendCartToWhatsApp()">
+                📱 Order Cart on WhatsApp
             </button>
-
-        </div>
-
-        <div class="product">
-
-            <div class="product-icon">✏️</div>
-
-            <h3>Pencil</h3>
-
-            <p class="price">₹5</p>
-
-            <button class="button"
-                onclick="orderOnWhatsApp('Pencil', 5)">
-                Order on WhatsApp
-            </button>
-
-        </div>
-
-        <div class="product">
-
-            <div class="product-icon">🧽</div>
-
-            <h3>Eraser</h3>
-
-            <p class="price">₹5</p>
-
-            <button class="button"
-                onclick="orderOnWhatsApp('Eraser', 5)">
-                Order on WhatsApp
-            </button>
-
-        </div>
-
-        <div class="product">
-
-            <div class="product-icon">🔪</div>
-
-            <h3>Sharpener</h3>
-
-            <p class="price">₹10</p>
-
-            <button class="button"
-                onclick="orderOnWhatsApp('Sharpener', 10)">
-                Order on WhatsApp
-            </button>
-
         </div>
 
     </div>
 
 </div>
 
+
 <footer>
-
-    <p>
-        © 2026 Mahalaxmi Stationary Stores |
-        Stationery & School Supplies
-    </p>
-
+    <p>© 2026 Mahalaxmi Stores | Stationery & School Supplies</p>
 </footer>
+
 
 <script>
 
     const whatsappNumber = "919900682833";
 
-    function orderOnWhatsApp(product, price) {
+    /* EASY-TO-CHANGE DELIVERY SETTINGS */
+
+    const FREE_DELIVERY_LIMIT = 400;
+    const NORMAL_DELIVERY_CHARGE = 90;
+    const FAR_DELIVERY_CHARGE = 150;
+
+
+    let cart = [];
+
+
+    function addToCart(product, price) {
+
+        if (price <= 0) {
+            alert("The box price for " + product + " has not been added yet.");
+            return;
+        }
+
+        const existing = cart.find(item => item.product === product);
+
+        if (existing) {
+            existing.quantity++;
+        } else {
+            cart.push({
+                product: product,
+                price: price,
+                quantity: 1
+            });
+        }
+
+        updateCart();
+    }
+
+
+    function removeFromCart(product) {
+
+        cart = cart.filter(item => item.product !== product);
+
+        updateCart();
+    }
+
+
+    function changeQuantity(product, change) {
+
+        const item = cart.find(item => item.product === product);
+
+        if (!item) return;
+
+        item.quantity += change;
+
+        if (item.quantity <= 0) {
+            removeFromCart(product);
+            return;
+        }
+
+        updateCart();
+    }
+
+
+    function updateCart() {
+
+        const cartItems = document.getElementById("cartItems");
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML = "Your cart is empty.";
+
+            document.getElementById("subtotal").textContent = "0";
+            document.getElementById("delivery").textContent = "0";
+            document.getElementById("grandTotal").textContent = "0";
+
+            return;
+        }
+
+
+        let subtotal = 0;
+        let html = "";
+
+
+        cart.forEach(item => {
+
+            const itemTotal = item.price * item.quantity;
+
+            subtotal += itemTotal;
+
+
+            html += `
+                <div class="cart-item">
+
+                    <strong>${item.product}</strong>
+
+                    <br>
+
+                    ₹${item.price} per box × ${item.quantity}
+                    = ₹${itemTotal}
+
+                    <br>
+
+                    <button class="button"
+                    onclick="changeQuantity('${item.product}', -1)">
+                    −
+                    </button>
+
+                    <button class="button"
+                    onclick="changeQuantity('${item.product}', 1)">
+                    +
+                    </button>
+
+                    <button class="button"
+                    onclick="removeFromCart('${item.product}')">
+                    Remove
+                    </button>
+
+                </div>
+            `;
+
+        });
+
+
+        cartItems.innerHTML = html;
+
+
+        const distance =
+            document.getElementById("distance").value;
+
+
+        let delivery;
+
+
+        if (distance === "far") {
+
+            delivery = FAR_DELIVERY_CHARGE;
+
+        } else if (subtotal >= FREE_DELIVERY_LIMIT) {
+
+            delivery = 0;
+
+        } else {
+
+            delivery = NORMAL_DELIVERY_CHARGE;
+
+        }
+
+
+        const grandTotal = subtotal + delivery;
+
+
+        document.getElementById("subtotal").textContent = subtotal;
+
+        document.getElementById("delivery").textContent =
+            delivery === 0 ? "FREE" : delivery;
+
+        document.getElementById("grandTotal").textContent = grandTotal;
+    }
+
+
+    function orderOnWhatsApp(product) {
 
         const message =
-            `Hello Mahalaxmi Stationary Stores, I want to order ${product} for ₹${price}.`;
+            `Hello Mahalaxmi Stores, I want to order a box of ${product}.`;
 
         const url =
             `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
         window.open(url, "_blank");
-
     }
+
+
+    function sendCartToWhatsApp() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+        }
+
+
+        let subtotal = 0;
+
+        let message =
+            "Hello Mahalaxmi Stores,%0A%0A" +
+            "I want to place an order:%0A%0A";
+
+
+        cart.forEach(item => {
+
+            const total = item.price * item.quantity;
+
+            subtotal += total;
+
+            message +=
+                `${item.product} - ${item.quantity} box(es) = ₹${total}%0A`;
+
+        });
+
+
+        const distance =
+            document.getElementById("distance").value;
+
+
+        let delivery;
+
+
+        if (distance === "far") {
+
+            delivery = FAR_DELIVERY_CHARGE;
+
+        } else if (subtotal >= FREE_DELIVERY_LIMIT) {
+
+            delivery = 0;
+
+        } else {
+
+            delivery = NORMAL_DELIVERY_CHARGE;
+
+        }
+
+
+        const grandTotal = subtotal + delivery;
+
+
+        message +=
+            `%0AItems total: ₹${subtotal}%0A`;
+
+
+        if (delivery === 0) {
+
+            message += "Delivery: FREE%0A";
+
+        } else {
+
+            message +=
+                `Delivery: ₹${delivery}%0A`;
+
+        }
+
+
+        message +=
+            `Final total: ₹${grandTotal}%0A%0A` +
+            "Thank you!";
+
+
+        const url =
+            `https://wa.me/${whatsappNumber}?text=${message}`;
+
+
+        window.open(url, "_blank");
+    }
+
 
     function searchProducts() {
 
-        const searchText =
-            document.getElementById("searchBox").value.toLowerCase();
+        const search =
+            document.getElementById("searchBox")
+            .value
+            .toLowerCase();
+
 
         const products =
             document.querySelectorAll(".product");
 
-        products.forEach(function(product) {
 
-            const productName =
-                product.querySelector("h3").textContent.toLowerCase();
+        products.forEach(product => {
 
-            if (productName.includes(searchText)) {
-                product.style.display = "block";
-            } else {
-                product.style.display = "none";
-            }
+            const name =
+                product.dataset.name.toLowerCase();
+
+
+            product.style.display =
+                name.includes(search) ? "" : "none";
 
         });
 
@@ -320,3 +703,4 @@
 
 </body>
 </html>
+```
