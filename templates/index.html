@@ -1,6 +1,6 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,18 @@
     <title>Mahalaxmi Stores | Stationery Shop in Bhatkal</title>
 
     <meta name="description"
-    content="Mahalaxmi Stores is a stationery shop in Bhatkal, Uttara Kannada, Karnataka, near Vidya Bharati English Medium School.">
+        content="Mahalaxmi Stores is a stationery shop in Bhatkal, Uttara Kannada, Karnataka.">
 
-   <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <style>
 
-    .shop-logo {
-        width: 180px;
-        height: auto;
-        display: block;
-        margin: 0 auto 10px;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
+        body {
+            font-family: Arial, sans-serif;
             background: #f5f6fa;
             color: #222;
         }
@@ -33,8 +27,15 @@
         header {
             background: #1f4e79;
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
+        }
+
+        .shop-logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
         }
 
         header h1 {
@@ -44,7 +45,7 @@
 
         header p {
             font-size: 16px;
-            margin: 4px;
+            margin: 5px;
         }
 
         .search {
@@ -88,7 +89,7 @@
         }
 
         .image-placeholder {
-            height: 180px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -117,7 +118,7 @@
             background: #1f4e79;
             color: white;
             border: none;
-            padding: 10px 12px;
+            padding: 10px 14px;
             border-radius: 7px;
             cursor: pointer;
             font-size: 14px;
@@ -137,7 +138,7 @@
         }
 
         .cart-item {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #ddd;
         }
 
@@ -154,8 +155,123 @@
             border-radius: 8px;
         }
 
+        .payment-note {
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff8e1;
+            border: 1px solid #f0d878;
+            border-radius: 8px;
+        }
+
+        .payment-note h3 {
+            margin-bottom: 10px;
+        }
+
+        .payment-note p {
+            margin: 7px 0;
+        }
+
+        .customer-details {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f7f7f7;
+            border-radius: 8px;
+        }
+
+        .customer-details h3 {
+            margin-bottom: 15px;
+        }
+
+        .customer-details label {
+            display: block;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 5px;
+        }
+
+        .customer-details input,
+        .customer-details textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .customer-details textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
         .checkout {
             margin-top: 20px;
+            text-align: center;
+        }
+
+        .checkout .button {
+            font-size: 16px;
+            padding: 13px 20px;
+        }
+
+        .typing-service {
+            margin-top: 40px;
+        }
+
+        .typing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .typing-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .typing-card p {
+            margin: 10px 0;
+        }
+
+        .typing-card label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .typing-card input[type="text"],
+        .typing-card input[type="tel"],
+        .typing-card input[type="number"],
+        .typing-card input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .typing-price {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .typing-total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .upload-note {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .typing-submit {
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
         }
 
         footer {
@@ -165,282 +281,689 @@
             text-align: center;
             padding: 20px;
         }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            .container {
+                padding: 0 12px;
+            }
+
+            .search input {
+                width: 95%;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Mahalaxmi Stores" class="shop-logo">
+
+    <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Mahalaxmi Stores"
+        class="shop-logo"
+    >
+
+    <h1>Mahalaxmi Stores</h1>
+
     <p>Your local stationery shop in Bhatkal</p>
+
     <p>📍 Bhatkal, Uttara Kannada, Karnataka</p>
+
     <p>Near Vidya Bharati English Medium School</p>
+
 </header>
-    <p>Your local stationery shop in Bhatkal</p>
-    <p>📍 Bhatkal, Uttara Kannada, Karnataka</p>
-    <p>Near Vidya Bharati English Medium School</p>
-</header>
+
 
 <div class="search">
-    <input type="text"
-           id="searchBox"
-           placeholder="🔍 Search stationery products..."
-           onkeyup="searchProducts()">
+
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search stationery products..."
+        onkeyup="searchProducts()"
+    >
+
 </div>
 
+
 <div class="container">
+
+
+    <!-- ==================== PENS ==================== -->
 
     <h2 class="section-title">🖊️ Pens</h2>
 
     <div class="products">
+
 
         <div class="product" data-name="Cello">
             <div class="image-placeholder">🖊️</div>
             <h3>Cello</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Cello', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Cello', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Cello')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Reynolds">
             <div class="image-placeholder">🖊️</div>
             <h3>Reynolds</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Reynolds', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Reynolds', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Reynolds')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Flair Writo-meter">
             <div class="image-placeholder">🖊️</div>
             <h3>Flair Writo-meter</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Flair Writo-meter', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Flair Writo-meter', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Flair Writo-meter')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Butterflow">
             <div class="image-placeholder">🖊️</div>
             <h3>Butterflow</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Butterflow', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Butterflow', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Butterflow')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Cello Gripper">
             <div class="image-placeholder">🖊️</div>
             <h3>Cello Gripper</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Cello Gripper', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Cello Gripper', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Cello Gripper')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Flair Carbonix">
             <div class="image-placeholder">🖊️</div>
             <h3>Flair Carbonix</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Flair Carbonix', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Flair Carbonix', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Flair Carbonix')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Cello Technotip">
             <div class="image-placeholder">🖊️</div>
             <h3>Cello Technotip</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Cello Technotip', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Cello Technotip', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Cello Technotip')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="XO">
             <div class="image-placeholder">🖊️</div>
             <h3>XO</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('XO', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('XO', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('XO')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Hauser Germany">
             <div class="image-placeholder">🖊️</div>
             <h3>Hauser Germany</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Hauser Germany', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Hauser Germany', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Hauser Germany')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="DOMS">
             <div class="image-placeholder">🖊️</div>
             <h3>DOMS</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('DOMS', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('DOMS', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('DOMS')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Natraj">
             <div class="image-placeholder">🖊️</div>
             <h3>Natraj</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Natraj', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Natraj', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Natraj')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="PaperSoft">
             <div class="image-placeholder">🖊️</div>
             <h3>PaperSoft</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('PaperSoft', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('PaperSoft', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('PaperSoft')">
-                WhatsApp
-            </button>
         </div>
+
 
         <div class="product" data-name="Rorito">
             <div class="image-placeholder">🖊️</div>
             <h3>Rorito</h3>
             <p class="price">Price to be added</p>
             <p class="box-label">📦 Full Box</p>
-            <button class="button" onclick="addToCart('Rorito', 0)">
+
+            <button
+                class="button"
+                onclick="addToCart('Rorito', 0)"
+            >
                 Add to Cart
             </button>
-            <button class="button" onclick="orderOnWhatsApp('Rorito')">
-                WhatsApp
-            </button>
+        </div>
+
+
+    </div>
+
+<!-- ==================== NOTEBOOKS ==================== -->
+
+<h2 class="section-title">📚 Notebooks</h2>
+
+<div class="products">
+
+    <div class="product" data-name="Classmate King Size 100 Pages Single Line">
+        <div class="image-placeholder">📓</div>
+        <h3>Classmate King Size</h3>
+        <p>100 Pages • Single Line</p>
+        <p class="price">₹240</p>
+        <p class="box-label">📦 1 Bundle</p>
+
+        <button
+            class="button"
+            onclick="addToCart('Classmate King Size - 100 Pages Single Line - 1 Bundle', 240)"
+        >
+            Add to Cart
+        </button>
+    </div>
+
+
+    <div class="product" data-name="Classmate King Size 200 Pages Single Line">
+        <div class="image-placeholder">📓</div>
+        <h3>Classmate King Size</h3>
+        <p>200 Pages • Single Line</p>
+        <p class="price">₹576</p>
+        <p class="box-label">📦 1 Bundle</p>
+
+        <button
+            class="button"
+            onclick="addToCart('Classmate King Size - 200 Pages Single Line - 1 Bundle', 576)"
+        >
+            Add to Cart
+        </button>
+    </div>
+
+
+    <div class="product" data-name="Classmate King Size 100 Pages 2 Line">
+        <div class="image-placeholder">📓</div>
+        <h3>Classmate King Size</h3>
+        <p>100 Pages • 2 Line</p>
+        <p class="price">₹300</p>
+        <p class="box-label">📦 1 Bundle</p>
+
+        <button
+            class="button"
+            onclick="addToCart('Classmate King Size - 100 Pages 2 Line - 1 Bundle', 300)"
+        >
+            Add to Cart
+        </button>
+    </div>
+
+
+    <div class="product" data-name="Classmate King Size 200 Pages 2 Line">
+        <div class="image-placeholder">📓</div>
+        <h3>Classmate King Size</h3>
+        <p>200 Pages • 2 Line</p>
+        <p class="price">₹660</p>
+        <p class="box-label">📦 1 Bundle</p>
+
+        <button
+            class="button"
+            onclick="addToCart('Classmate King Size - 200 Pages 2 Line - 1 Bundle', 660)"
+        >
+            Add to Cart
+        </button>
+    </div>
+
+
+    <div class="product" data-name="Classmate King Size 100 Pages 3 Line">
+        <div class="image-placeholder">📓</div>
+        <h3>Classmate King Size</h3>
+        <p>100 Pages • 3 Line</p>
+        <p class="price">Price to be added</p>
+        <p class="box-label">📦 1 Bundle</p>
+
+        <button
+            class="button"
+            onclick="addToCart('Classmate King Size - 100 Pages 3 Line - 1 Bundle', 0)"
+        >
+            Add to Cart
+        </button>
+    </div>
+
+</div>
+    <!-- ==================== TYPING SERVICE ==================== -->
+
+    <div class="typing-service">
+
+        <h2 class="section-title">⌨️ Typing Service</h2>
+
+        <div class="typing-card">
+
+            <h3>Convert Your Pages Into a Neat Word Document</h3>
+
+            <p>
+                We can convert your handwritten pages, images or photos
+                into a neat and properly typed Word document.
+            </p>
+
+            <p class="typing-price">
+                💰 ₹35 per page
+            </p>
+
+            <p>
+                📌 <strong>No cash payments.</strong>
+                Online payment only.
+            </p>
+
+
+            <form
+                action="/typing-order"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <label>Your Name</label>
+
+                <input
+                    type="text"
+                    name="customer_name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+
+                <label>Number of Pages</label>
+
+                <input
+                    type="number"
+                    name="pages"
+                    id="typingPages"
+                    min="1"
+                    placeholder="Enter number of pages"
+                    oninput="calculateTypingPrice()"
+                    required
+                >
+
+
+                <p class="typing-total">
+                    Total Typing Price:
+                    ₹<span id="typingTotal">0</span>
+                </p>
+
+
+                <label>Upload Your Files</label>
+
+                <input
+                    type="file"
+                    name="files"
+                    multiple
+                    accept="image/*,.pdf,.doc,.docx"
+                    required
+                >
+
+
+                <p class="upload-note">
+                    📤 You can upload photos, images, PDF or Word files.
+                </p>
+
+
+                <div class="payment-note">
+
+                    <h3>💳 Payment Information</h3>
+
+                    <p>
+                        <strong>No Cash on Delivery.</strong>
+                    </p>
+
+                    <p>
+                        We accept <strong>UPI payments only.</strong>
+                    </p>
+
+                    <p>
+                        UPI ID:
+                        <strong> 9900682833@ybl</strong>
+                    </p>
+
+                    <p>
+                        Please complete the UPI payment before submitting
+                        your typing order.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="button typing-submit"
+                >
+                    📤 Submit Typing Order
+                </button>
+
+            </form>
+
         </div>
 
     </div>
 
 
+    <!-- ==================== CART ==================== -->
+
     <h2 class="section-title">🛒 Your Cart</h2>
 
+
     <div class="cart">
+
 
         <div id="cartItems">
             Your cart is empty.
         </div>
 
+
         <div class="cart-total">
-            Items total: ₹<span id="subtotal">0</span>
+
+            Items total:
+            ₹<span id="subtotal">0</span>
+
         </div>
+
+
+        <!-- DELIVERY -->
 
         <div class="delivery-info">
 
             <strong>🚚 Delivery</strong>
 
             <p style="margin-top:10px;">
+
                 Within 4 km:
+
                 <br>
-                • ₹400 or more → <strong>FREE</strong>
+
+                • ₹400 or more →
+                <strong>FREE</strong>
+
                 <br>
-                • Below ₹400 → <strong>₹90</strong>
+
+                • Below ₹400 →
+                <strong>₹90</strong>
+
             </p>
 
+
             <p style="margin-top:10px;">
-                More than 4 km → <strong>₹150</strong>
+
+                More than 4 km →
+                <strong>₹150</strong>
+
             </p>
+
 
             <p style="margin-top:15px;">
+
                 📍 Delivery distance:
+
             </p>
 
-            <select id="distance" onchange="updateCart()">
-                <option value="near">Within 4 km</option>
-                <option value="far">More than 4 km</option>
+
+            <select
+                id="distance"
+                onchange="updateCart()"
+            >
+
+                <option value="near">
+                    Within 4 km
+                </option>
+
+                <option value="far">
+                    More than 4 km
+                </option>
+
             </select>
 
-            <p style="margin-top:10px;">
-                Delivery charge:
-                ₹<span id="delivery">0</span>
-            </p>
 
             <p style="margin-top:10px;">
+
+                Delivery charge:
+
+                ₹<span id="delivery">0</span>
+
+            </p>
+
+
+            <p style="margin-top:10px;">
+
                 💰 Final total:
+
                 ₹<span id="grandTotal">0</span>
+
             </p>
 
         </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="payment-note">
+
+            <h3>💳 Payment Information</h3>
+
+            <p>
+                <strong>NO CASH ON DELIVERY</strong>
+            </p>
+
+            <p>
+                We accept <strong>UPI payments only.</strong>
+            </p>
+
+            <p>
+                UPI ID:
+                <strong>9900682833@ybl</strong>
+            </p>
+
+            <p>
+                After your cart is ready, please complete the UPI payment
+                for the final amount.
+            </p>
+
+        </div>
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="customer-details">
+
+            <h3>👤 Customer Details</h3>
+
+
+            <label for="customerName">
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name"
+            >
+
+
+            <label for="customerPhone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="Enter your phone number"
+            >
+
+
+            <label for="customerAddress">
+                Delivery Address
+            </label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Enter your complete delivery address"
+            ></textarea>
+
+
+        </div>
+
 
         <div class="checkout">
-            <button class="button" onclick="sendCartToWhatsApp()">
-                📱 Order Cart on WhatsApp
+
+            <button
+                class="button"
+                onclick="placeOrder()"
+            >
+                🛒 Place Order
             </button>
+
         </div>
 
+
     </div>
+
 
 </div>
 
 
 <footer>
-    <p>© 2026 Mahalaxmi Stores | Stationery & School Supplies</p>
+
+    <p>
+        © 2026 Mahalaxmi Stores |
+        Stationery & School Supplies
+    </p>
+
 </footer>
 
 
 <script>
 
-    const whatsappNumber = "919900682833";
 
-    /* EASY-TO-CHANGE DELIVERY SETTINGS */
+    /* ==================== DELIVERY SETTINGS ==================== */
 
     const FREE_DELIVERY_LIMIT = 400;
+
     const NORMAL_DELIVERY_CHARGE = 90;
+
     const FAR_DELIVERY_CHARGE = 150;
 
+
+    /* ==================== CART ==================== */
 
     let cart = [];
 
@@ -448,106 +971,181 @@
     function addToCart(product, price) {
 
         if (price <= 0) {
-            alert("The box price for " + product + " has not been added yet.");
+
+            alert(
+                "The price for " +
+                product +
+                " has not been added yet."
+            );
+
             return;
+
         }
 
-        const existing = cart.find(item => item.product === product);
+
+        const existing =
+            cart.find(
+                item => item.product === product
+            );
+
 
         if (existing) {
+
             existing.quantity++;
-        } else {
-            cart.push({
-                product: product,
-                price: price,
-                quantity: 1
-            });
+
         }
 
+        else {
+
+            cart.push({
+
+                product: product,
+
+                price: price,
+
+                quantity: 1
+
+            });
+
+        }
+
+
         updateCart();
+
     }
 
 
     function removeFromCart(product) {
 
-        cart = cart.filter(item => item.product !== product);
+        cart =
+            cart.filter(
+                item => item.product !== product
+            );
 
         updateCart();
+
     }
 
 
     function changeQuantity(product, change) {
 
-        const item = cart.find(item => item.product === product);
+        const item =
+            cart.find(
+                item => item.product === product
+            );
+
 
         if (!item) return;
 
+
         item.quantity += change;
 
+
         if (item.quantity <= 0) {
+
             removeFromCart(product);
+
             return;
+
         }
 
+
         updateCart();
+
     }
 
 
+    /* ==================== UPDATE CART ==================== */
+
     function updateCart() {
 
-        const cartItems = document.getElementById("cartItems");
+        const cartItems =
+            document.getElementById("cartItems");
+
 
         if (cart.length === 0) {
 
-            cartItems.innerHTML = "Your cart is empty.";
+            cartItems.innerHTML =
+                "Your cart is empty.";
 
-            document.getElementById("subtotal").textContent = "0";
-            document.getElementById("delivery").textContent = "0";
-            document.getElementById("grandTotal").textContent = "0";
+            document.getElementById("subtotal")
+                .textContent = "0";
+
+            document.getElementById("delivery")
+                .textContent = "0";
+
+            document.getElementById("grandTotal")
+                .textContent = "0";
 
             return;
+
         }
 
 
         let subtotal = 0;
+
         let html = "";
 
 
         cart.forEach(item => {
 
-            const itemTotal = item.price * item.quantity;
+            const itemTotal =
+                item.price * item.quantity;
+
 
             subtotal += itemTotal;
 
 
             html += `
+
                 <div class="cart-item">
 
-                    <strong>${item.product}</strong>
+                    <strong>
+                        ${item.product}
+                    </strong>
 
                     <br>
 
-                    ₹${item.price} per box × ${item.quantity}
+                    ₹${item.price} per box
+                    × ${item.quantity}
+
                     = ₹${itemTotal}
 
-                    <br>
+                    <br><br>
 
-                    <button class="button"
-                    onclick="changeQuantity('${item.product}', -1)">
-                    −
+                    <button
+                        class="button"
+                        onclick="changeQuantity(
+                            '${item.product}',
+                            -1
+                        )"
+                    >
+                        −
                     </button>
 
-                    <button class="button"
-                    onclick="changeQuantity('${item.product}', 1)">
-                    +
+
+                    <button
+                        class="button"
+                        onclick="changeQuantity(
+                            '${item.product}',
+                            1
+                        )"
+                    >
+                        +
                     </button>
 
-                    <button class="button"
-                    onclick="removeFromCart('${item.product}')">
-                    Remove
+
+                    <button
+                        class="button"
+                        onclick="removeFromCart(
+                            '${item.product}'
+                        )"
+                    >
+                        Remove
                     </button>
 
                 </div>
+
             `;
 
         });
@@ -565,68 +1163,147 @@
 
         if (distance === "far") {
 
-            delivery = FAR_DELIVERY_CHARGE;
+            delivery =
+                FAR_DELIVERY_CHARGE;
 
-        } else if (subtotal >= FREE_DELIVERY_LIMIT) {
+        }
+
+        else if (
+            subtotal >= FREE_DELIVERY_LIMIT
+        ) {
 
             delivery = 0;
 
-        } else {
+        }
 
-            delivery = NORMAL_DELIVERY_CHARGE;
+        else {
+
+            delivery =
+                NORMAL_DELIVERY_CHARGE;
 
         }
 
 
-        const grandTotal = subtotal + delivery;
+        const grandTotal =
+            subtotal + delivery;
 
 
-        document.getElementById("subtotal").textContent = subtotal;
+        document.getElementById("subtotal")
+            .textContent = subtotal;
 
-        document.getElementById("delivery").textContent =
-            delivery === 0 ? "FREE" : delivery;
 
-        document.getElementById("grandTotal").textContent = grandTotal;
+        document.getElementById("delivery")
+            .textContent =
+            delivery === 0
+                ? "FREE"
+                : delivery;
+
+
+        document.getElementById("grandTotal")
+            .textContent = grandTotal;
+
     }
 
 
-    function orderOnWhatsApp(product) {
+    /* ==================== PLACE ORDER ==================== */
 
-        const message =
-            `Hello Mahalaxmi Stores, I want to order a box of ${product}.`;
-
-        const url =
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-        window.open(url, "_blank");
-    }
-
-
-    function sendCartToWhatsApp() {
+    function placeOrder() {
 
         if (cart.length === 0) {
 
-            alert("Your cart is empty.");
+            alert(
+                "Your cart is empty. Please add products first."
+            );
 
             return;
+
+        }
+
+
+        const name =
+            document.getElementById("customerName").value.trim();
+
+
+        const phone =
+            document.getElementById("customerPhone").value.trim();
+
+
+        const address =
+            document.getElementById("customerAddress").value.trim();
+
+
+        if (!name) {
+
+            alert("Please enter your name.");
+
+            return;
+
+        }
+
+
+        if (!phone) {
+
+            alert("Please enter your phone number.");
+
+            return;
+
+        }
+
+
+        if (!address) {
+
+            alert("Please enter your delivery address.");
+
+            return;
+
         }
 
 
         let subtotal = 0;
 
-        let message =
-            "Hello Mahalaxmi Stores,%0A%0A" +
-            "I want to place an order:%0A%0A";
+
+        let orderText =
+            "MAHALAXMI STORES ORDER\n\n";
+
+
+        orderText +=
+            "Customer Name: " +
+            name +
+            "\n";
+
+
+        orderText +=
+            "Phone: " +
+            phone +
+            "\n";
+
+
+        orderText +=
+            "Address: " +
+            address +
+            "\n\n";
+
+
+        orderText +=
+            "ORDER ITEMS:\n";
 
 
         cart.forEach(item => {
 
-            const total = item.price * item.quantity;
+            const total =
+                item.price * item.quantity;
+
 
             subtotal += total;
 
-            message +=
-                `${item.product} - ${item.quantity} box(es) = ₹${total}%0A`;
+
+            orderText +=
+                item.product +
+                " - " +
+                item.quantity +
+                " box(es) - ₹" +
+                total +
+                "\n";
 
         });
 
@@ -640,78 +1317,146 @@
 
         if (distance === "far") {
 
-            delivery = FAR_DELIVERY_CHARGE;
+            delivery =
+                FAR_DELIVERY_CHARGE;
 
-        } else if (subtotal >= FREE_DELIVERY_LIMIT) {
+        }
+
+        else if (
+            subtotal >= FREE_DELIVERY_LIMIT
+        ) {
 
             delivery = 0;
 
-        } else {
+        }
 
-            delivery = NORMAL_DELIVERY_CHARGE;
+        else {
+
+            delivery =
+                NORMAL_DELIVERY_CHARGE;
 
         }
 
 
-        const grandTotal = subtotal + delivery;
+        const grandTotal =
+            subtotal + delivery;
 
 
-        message +=
-            `%0AItems total: ₹${subtotal}%0A`;
+        orderText +=
+            "\nItems total: ₹" +
+            subtotal;
 
 
-        if (delivery === 0) {
-
-            message += "Delivery: FREE%0A";
-
-        } else {
-
-            message +=
-                `Delivery: ₹${delivery}%0A`;
-
-        }
+        orderText +=
+            "\nDelivery: " +
+            (
+                delivery === 0
+                    ? "FREE"
+                    : "₹" + delivery
+            );
 
 
-        message +=
-            `Final total: ₹${grandTotal}%0A%0A` +
-            "Thank you!";
+        orderText +=
+            "\nFinal total: ₹" +
+            grandTotal;
 
 
-        const url =
-            `https://wa.me/${whatsappNumber}?text=${message}`;
+        orderText +=
+            "\n\nPayment: UPI ONLY";
 
 
-        window.open(url, "_blank");
+        orderText +=
+            "\nNo Cash on Delivery";
+
+
+        /*
+         * IMPORTANT:
+         *
+         * The order currently shows the order information
+         * on the customer's screen.
+         *
+         * Later we will connect this to a proper service
+         * so the order reaches the shop owner's phone.
+         */
+
+        alert(
+            "Order details prepared successfully!\n\n" +
+            "Final Total: ₹" +
+            grandTotal +
+            "\n\n" +
+            "Payment method: UPI only.\n" +
+            "No Cash on Delivery."
+        );
+
+
+        console.log(orderText);
+
     }
 
+
+    /* ==================== TYPING PRICE ==================== */
+
+    function calculateTypingPrice() {
+
+        const pages =
+            document.getElementById(
+                "typingPages"
+            ).value;
+
+
+        const pricePerPage = 35;
+
+
+        const total =
+            pages * pricePerPage;
+
+
+        document.getElementById(
+            "typingTotal"
+        ).textContent =
+            total || 0;
+
+    }
+
+
+    /* ==================== SEARCH ==================== */
 
     function searchProducts() {
 
         const search =
-            document.getElementById("searchBox")
+            document.getElementById(
+                "searchBox"
+            )
             .value
             .toLowerCase();
 
 
         const products =
-            document.querySelectorAll(".product");
+            document.querySelectorAll(
+                ".product"
+            );
 
 
         products.forEach(product => {
 
             const name =
-                product.dataset.name.toLowerCase();
+                product.dataset.name
+                    .toLowerCase();
 
 
             product.style.display =
-                name.includes(search) ? "" : "none";
+                name.includes(search)
+                    ? ""
+                    : "none";
 
         });
 
     }
 
+
 </script>
 
+
 </body>
+
 </html>
-```
