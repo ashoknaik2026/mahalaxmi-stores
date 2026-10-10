@@ -48,6 +48,24 @@
             margin: 5px;
         }
 
+        .delivery-banner {
+            max-width: 1100px;
+            margin: 18px auto 0;
+            padding: 16px 20px;
+            border-radius: 10px;
+            background: #eaf7ed;
+            border: 1px solid #b8dfc0;
+            color: #174b25;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .delivery-banner strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
         .search {
             text-align: center;
             padding: 25px;
@@ -335,6 +353,21 @@
 
         }
 
+
+        .home-menu { max-width: 1100px; margin: 22px auto; padding: 0 20px; }
+        .home-menu h2 { margin: 0 0 16px; font-size: 24px; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 14px; }
+        .category-card { background: #fff; border: 1px solid #e0e4ea; border-radius: 12px; padding: 20px 12px; min-height: 110px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,.06); cursor: pointer; color: #222; font-size: 17px; font-weight: bold; }
+        .category-card .category-emoji { display: block; font-size: 32px; margin-bottom: 9px; }
+        .category-card:hover { border-color: #1f4e79; background: #f5f9ff; }
+        .home-cart-button { display: block; width: 100%; max-width: 420px; margin: 22px auto 0; padding: 15px; background: #1f4e79; color: #fff; border: 0; border-radius: 9px; font-size: 17px; font-weight: bold; cursor: pointer; }
+        .back-button { margin: 0 0 16px; }
+        .category-view { display: none; }
+        .empty-category { background: #fff; padding: 22px; border-radius: 10px; margin: 14px 0; text-align: center; }
+        #searchArea { display: none; }
+        #cartHeading, #cartArea { display: none; }
+        .cart .checkout { margin-bottom: 8px; }
+
     </style>
 
 </head>
@@ -362,7 +395,37 @@
 </header>
 
 
-<div class="search">
+<div class="delivery-banner" role="note" aria-label="Delivery policy">
+    <strong>🎉 FREE DELIVERY on orders of ₹500 or more!</strong>
+    <p>For orders below ₹500, delivery charges may apply based on the delivery distance range.</p>
+</div>
+
+
+<div class="home-menu" id="homeMenu">
+    <h2>🛍️ Choose a Category</h2>
+    <div class="category-grid">
+        <button class="category-card" onclick="showCategory('pens')"><span class="category-emoji">🖊️</span>Pens</button>
+        <button class="category-card" onclick="showCategory('notebooks')"><span class="category-emoji">📚</span>Books & Notebooks</button>
+        <button class="category-card" onclick="showCategory('pencils')"><span class="category-emoji">✏️</span>Pencils</button>
+        <button class="category-card" onclick="showCategory('erasers')"><span class="category-emoji">🧽</span>Erasers</button>
+        <button class="category-card" onclick="showCategory('sharpeners')"><span class="category-emoji">🔺</span>Sharpeners</button>
+        <button class="category-card" onclick="showCategory('rulers')"><span class="category-emoji">📏</span>Rulers</button>
+        <button class="category-card" onclick="showCategory('snacks')"><span class="category-emoji">🍪</span>Snacks</button>
+        <button class="category-card" onclick="showCategory('chocolates')"><span class="category-emoji">🍫</span>Chocolates</button>
+        <button class="category-card" onclick="showCategory('xerox')"><span class="category-emoji">🖨️</span>Xerox</button>
+        <button class="category-card" onclick="showCategory('typing')"><span class="category-emoji">⌨️</span>Typing Service</button>
+    </div>
+    <button class="home-cart-button" onclick="showCart()">🛒 See My Cart</button>
+</div>
+
+<div id="categoryPlaceholder" class="container" style="display:none;">
+    <button class="button back-button" onclick="showHome()">← Back to Categories</button>
+    <h2 id="placeholderTitle" class="section-title"></h2>
+    <div class="empty-category">Products for this category will be added soon. Please check back later.</div>
+</div>
+
+
+<div class="search" id="searchArea">
 
     <input
         type="text"
@@ -377,6 +440,7 @@
 <div class="container">
 
 
+<section id="category-pens" class="category-view">
     <!-- ==================== PENS ==================== -->
 
     <h2 class="section-title">🖊️ Pens</h2>
@@ -581,6 +645,9 @@
 
     </div>
 
+</section>
+
+<section id="category-notebooks" class="category-view">
 <!-- ==================== NOTEBOOKS ==================== -->
 
 <h2 class="section-title">📚 Notebooks</h2>
@@ -667,6 +734,9 @@
     </div>
 
 </div>
+</section>
+
+<section id="category-typing" class="category-view">
     <!-- ==================== TYPING SERVICE ==================== -->
 
     <div class="typing-service">
@@ -792,12 +862,15 @@
     </div>
 
 
+</section>
+
     <!-- ==================== CART ==================== -->
 
-    <h2 class="section-title">🛒 Your Cart</h2>
+    <h2 class="section-title" id="cartHeading">🛒 Your Cart</h2>
 
 
-    <div class="cart">
+    <div class="cart" id="cartArea">
+        <button class="button back-button" type="button" onclick="showHome()">← Back to Categories</button>
 
 
         <div id="cartItems">
@@ -821,8 +894,8 @@
 
             <p style="margin-top:10px;">
                 • Orders of ₹500 or more: <strong>FREE delivery</strong><br>
-                • Below ₹500: delivery depends on distance<br>
-                • Over 12 km: ₹50 total delivery charge
+                • For orders below ₹500, delivery charges may apply based on the delivery distance range.<br>
+                • More than 12 km: ₹50 total delivery charge
             </p>
 
 
@@ -873,9 +946,9 @@
         </div>
 
 
-        <!-- PAYMENT -->
+        <!-- PAYMENT: shown after the customer clicks Place Order -->
 
-        <div class="payment-note">
+        <div class="payment-note" id="paymentSection" style="display: none;">
 
             <h3>💳 Payment Information</h3>
 
@@ -985,6 +1058,54 @@
 
 <script>
 
+    const categoryNames = {
+        pencils: "✏️ Pencils", erasers: "🧽 Erasers", sharpeners: "🔺 Sharpeners",
+        rulers: "📏 Rulers", snacks: "🍪 Snacks", chocolates: "🍫 Chocolates", xerox: "🖨️ Xerox"
+    };
+
+    function hideAllMainViews() {
+        document.getElementById("homeMenu").style.display = "none";
+        document.getElementById("searchArea").style.display = "none";
+        document.getElementById("categoryPlaceholder").style.display = "none";
+        document.querySelectorAll(".category-view").forEach(section => section.style.display = "none");
+        document.getElementById("cartHeading").style.display = "none";
+        document.getElementById("cartArea").style.display = "none";
+    }
+
+    function showHome() {
+        hideAllMainViews();
+        document.getElementById("homeMenu").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showCategory(category) {
+        hideAllMainViews();
+        const section = document.getElementById("category-" + category);
+        if (section) {
+            section.style.display = "block";
+            document.getElementById("searchArea").style.display = "block";
+            const oldBack = section.querySelector(".back-button");
+            if (!oldBack) {
+                const back = document.createElement("button");
+                back.className = "button back-button";
+                back.type = "button";
+                back.textContent = "← Back to Categories";
+                back.onclick = showHome;
+                section.insertBefore(back, section.firstChild);
+            }
+        } else {
+            document.getElementById("categoryPlaceholder").style.display = "block";
+            document.getElementById("placeholderTitle").textContent = categoryNames[category] || "Products";
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showCart() {
+        hideAllMainViews();
+        document.getElementById("cartHeading").style.display = "block";
+        document.getElementById("cartArea").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
     /* ==================== DELIVERY SETTINGS ==================== */
 
@@ -1420,15 +1541,24 @@
          * so the order reaches the shop owner's phone.
          */
 
-        alert(
-            "Order details prepared successfully!\n\n" +
-            "Final Total: ₹" +
-            grandTotal +
-            "\n\n" +
-            "Payment method: UPI only.\n" +
-            "No Cash on Delivery."
-        );
+        // Show PhonePe / UPI payment only after valid order details are entered.
+        const paymentSection = document.getElementById("paymentSection");
+        if (paymentSection) {
+            paymentSection.style.display = "block";
+            paymentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
 
+        const paymentAmount = document.getElementById("paymentAmount");
+        if (paymentAmount) paymentAmount.textContent = grandTotal;
+
+        const upiPayButton = document.getElementById("upiPayButton");
+        if (upiPayButton) upiPayButton.disabled = grandTotal <= 0;
+
+        alert(
+            "Order details are ready.\n\n" +
+            "Please use the PhonePe / UPI payment section to pay ₹" + grandTotal +
+            ". Your payment is not automatically verified by this website."
+        );
 
         console.log(orderText);
 
@@ -1493,6 +1623,13 @@
         });
 
     }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showHome();
+        const paymentSection = document.getElementById("paymentSection");
+        if (paymentSection) paymentSection.style.display = "none";
+    });
 
 
 </script>
