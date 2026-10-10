@@ -973,10 +973,9 @@
             <div class="qr-payment">
                 <h3>📱 Pay with PhonePe / UPI</h3>
                 <p>Final amount to pay: <strong>₹<span id="paymentAmount">0</span></strong></p>
-                <img src="{{ url_for('static', filename='phonepe-qr.png') }}"
-                     alt="Mahalaxmi Stores PhonePe payment QR code">
-                <p>Or scan this QR code with your UPI app.</p>
-                <p><small>With a regular QR scan, your UPI app may ask you to enter the amount manually. Check the amount and recipient before paying.</small></p>
+                <img id="dynamicUpiQr" src="" alt="Mahalaxmi Stores payment QR code" width="250" height="250">
+                <p>Scan this order-specific QR code with PhonePe or another UPI app.</p>
+                <p><small>The QR code is generated with the final amount. Before paying, check the recipient and amount shown in your UPI app.</small></p>
                 <button type="button" class="pay-button" id="upiPayButton"
                         onclick="payExactAmount()" disabled>
                     Pay exact amount in UPI app
@@ -1364,6 +1363,21 @@
 
     /* ==================== UPI PAYMENT ==================== */
 
+    function updateDynamicUpiQr(amount) {
+        const qrImage = document.getElementById("dynamicUpiQr");
+        if (!qrImage || !Number.isFinite(Number(amount)) || Number(amount) <= 0) return;
+
+        const upiUrl = "upi://pay?pa=9900682833%40ybl"
+            + "&pn=" + encodeURIComponent("Mahalaxmi Stores")
+            + "&am=" + encodeURIComponent(Number(amount).toFixed(2))
+            + "&cu=INR"
+            + "&tn=" + encodeURIComponent("Mahalaxmi Stores order payment");
+
+        // Create a QR image from the UPI payment URI including the exact amount.
+        qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&format=png&data="
+            + encodeURIComponent(upiUrl);
+    }
+
     function payExactAmount() {
         if (cart.length === 0) {
             alert("Please add products to your cart first.");
@@ -1550,6 +1564,7 @@
 
         const paymentAmount = document.getElementById("paymentAmount");
         if (paymentAmount) paymentAmount.textContent = grandTotal;
+        updateDynamicUpiQr(grandTotal);
 
         const upiPayButton = document.getElementById("upiPayButton");
         if (upiPayButton) upiPayButton.disabled = grandTotal <= 0;
