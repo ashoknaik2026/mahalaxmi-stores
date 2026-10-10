@@ -171,6 +171,39 @@
             margin: 7px 0;
         }
 
+        .qr-payment {
+            margin-top: 14px;
+            text-align: center;
+            padding: 16px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .qr-payment img {
+            display: block;
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+            margin: 12px auto;
+        }
+
+        .qr-payment .pay-button {
+            background: #5f259f;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .qr-payment .pay-button:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+
         .customer-details {
             margin-top: 20px;
             padding: 20px;
@@ -787,27 +820,9 @@
             <strong>🚚 Delivery</strong>
 
             <p style="margin-top:10px;">
-
-                Within 4 km:
-
-                <br>
-
-                • ₹400 or more →
-                <strong>FREE</strong>
-
-                <br>
-
-                • Below ₹400 →
-                <strong>₹90</strong>
-
-            </p>
-
-
-            <p style="margin-top:10px;">
-
-                More than 4 km →
-                <strong>₹150</strong>
-
+                • Orders of ₹500 or more: <strong>FREE delivery</strong><br>
+                • Below ₹500: delivery depends on distance<br>
+                • Over 12 km: ₹50 total delivery charge
             </p>
 
 
@@ -823,13 +838,17 @@
                 onchange="updateCart()"
             >
 
-                <option value="near">
-                    Within 4 km
-                </option>
-
-                <option value="far">
-                    More than 4 km
-                </option>
+                <option value="0-3">Within 3 km — ₹40</option>
+                <option value="3-4">More than 3 km up to 4 km — ₹50</option>
+                <option value="4-5">More than 4 km up to 5 km — ₹80</option>
+                <option value="5-6">More than 5 km up to 6 km — ₹100</option>
+                <option value="6-7">More than 6 km up to 7 km — ₹130</option>
+                <option value="7-8">More than 7 km up to 8 km — ₹155</option>
+                <option value="8-9">More than 8 km up to 9 km — ₹180</option>
+                <option value="9-10">More than 9 km up to 10 km — ₹200</option>
+                <option value="10-11">More than 10 km up to 11 km — ₹250</option>
+                <option value="11-12">More than 11 km up to 12 km — ₹265</option>
+                <option value="over12">More than 12 km — ₹50</option>
 
             </select>
 
@@ -874,9 +893,22 @@
             </p>
 
             <p>
-                After your cart is ready, please complete the UPI payment
-                for the final amount.
+                Your final payable amount is shown below. On a phone, use the
+                button to open a UPI app with the amount filled in.
             </p>
+
+            <div class="qr-payment">
+                <h3>📱 Pay with PhonePe / UPI</h3>
+                <p>Final amount to pay: <strong>₹<span id="paymentAmount">0</span></strong></p>
+                <img src="{{ url_for('static', filename='phonepe-qr.png') }}"
+                     alt="Mahalaxmi Stores PhonePe payment QR code">
+                <p>Or scan this QR code with your UPI app.</p>
+                <p><small>With a regular QR scan, your UPI app may ask you to enter the amount manually. Check the amount and recipient before paying.</small></p>
+                <button type="button" class="pay-button" id="upiPayButton"
+                        onclick="payExactAmount()" disabled>
+                    Pay exact amount in UPI app
+                </button>
+            </div>
 
         </div>
 
@@ -956,11 +988,29 @@
 
     /* ==================== DELIVERY SETTINGS ==================== */
 
-    const FREE_DELIVERY_LIMIT = 400;
+    const FREE_DELIVERY_LIMIT = 500;
 
-    const NORMAL_DELIVERY_CHARGE = 90;
+    // Delivery charge for each selected distance range.
+    const DELIVERY_CHARGES = {
+        "0-3": 40,
+        "3-4": 50,
+        "4-5": 80,
+        "5-6": 100,
+        "6-7": 130,
+        "7-8": 155,
+        "8-9": 180,
+        "9-10": 200,
+        "10-11": 250,
+        "11-12": 265,
+        "over12": 50
+    };
 
-    const FAR_DELIVERY_CHARGE = 150;
+    function calculateDelivery(subtotal, distance) {
+        if (subtotal >= FREE_DELIVERY_LIMIT) {
+            return 0;
+        }
+        return DELIVERY_CHARGES[distance] ?? 40;
+    }
 
 
     /* ==================== CART ==================== */
@@ -1077,6 +1127,11 @@
             document.getElementById("grandTotal")
                 .textContent = "0";
 
+            const paymentAmount = document.getElementById("paymentAmount");
+            if (paymentAmount) paymentAmount.textContent = "0";
+            const upiPayButton = document.getElementById("upiPayButton");
+            if (upiPayButton) upiPayButton.disabled = true;
+
             return;
 
         }
@@ -1157,31 +1212,7 @@
         const distance =
             document.getElementById("distance").value;
 
-
-        let delivery;
-
-
-        if (distance === "far") {
-
-            delivery =
-                FAR_DELIVERY_CHARGE;
-
-        }
-
-        else if (
-            subtotal >= FREE_DELIVERY_LIMIT
-        ) {
-
-            delivery = 0;
-
-        }
-
-        else {
-
-            delivery =
-                NORMAL_DELIVERY_CHARGE;
-
-        }
+        const delivery = calculateDelivery(subtotal, distance);
 
 
         const grandTotal =
@@ -1202,6 +1233,40 @@
         document.getElementById("grandTotal")
             .textContent = grandTotal;
 
+        const paymentAmount = document.getElementById("paymentAmount");
+        if (paymentAmount) paymentAmount.textContent = grandTotal;
+        const upiPayButton = document.getElementById("upiPayButton");
+        if (upiPayButton) upiPayButton.disabled = grandTotal <= 0;
+
+    }
+
+
+    /* ==================== UPI PAYMENT ==================== */
+
+    function payExactAmount() {
+        if (cart.length === 0) {
+            alert("Please add products to your cart first.");
+            return;
+        }
+
+        const grandTotal = Number(
+            document.getElementById("grandTotal").textContent
+        );
+
+        if (!Number.isFinite(grandTotal) || grandTotal <= 0) {
+            alert("Please check your cart total before paying.");
+            return;
+        }
+
+        const name = "Mahalaxmi Stores";
+        const note = "Mahalaxmi Stores order payment";
+        const upiUrl = "upi://pay?pa=9900682833%40ybl"
+            + "&pn=" + encodeURIComponent(name)
+            + "&am=" + encodeURIComponent(grandTotal.toFixed(2))
+            + "&cu=INR"
+            + "&tn=" + encodeURIComponent(note);
+
+        window.location.href = upiUrl;
     }
 
 
@@ -1311,31 +1376,7 @@
         const distance =
             document.getElementById("distance").value;
 
-
-        let delivery;
-
-
-        if (distance === "far") {
-
-            delivery =
-                FAR_DELIVERY_CHARGE;
-
-        }
-
-        else if (
-            subtotal >= FREE_DELIVERY_LIMIT
-        ) {
-
-            delivery = 0;
-
-        }
-
-        else {
-
-            delivery =
-                NORMAL_DELIVERY_CHARGE;
-
-        }
+        const delivery = calculateDelivery(subtotal, distance);
 
 
         const grandTotal =
